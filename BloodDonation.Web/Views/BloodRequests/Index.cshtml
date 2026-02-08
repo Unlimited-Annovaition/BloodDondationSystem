@@ -1,0 +1,49 @@
+@model IEnumerable<BloodDonation.Core.Entities.BloodRequest>
+
+@{
+    ViewData["Title"] = "سجل طلباتي";
+}
+
+<div class="container mt-5">
+    <h3>🏥 سجل طلبات الدم (My Requests)</h3>
+    <br />
+    
+    <p>
+        <a asp-action="Create" class="btn btn-primary">+ طلب جديد</a>
+    </p>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>تاريخ الطلب</th>
+            <th>فصيلة الدم</th>
+            <th>العدد المطلوب</th>
+            <th>الحالة</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.RequestDate.ToString("yyyy-MM-dd HH:mm")</td>
+                <td><span class="badge bg-danger">@item.BloodType.Name</span></td>
+                <td>@item.Quantity</td>
+                <td>
+                    @if (item.Status == "Pending")
+                    {
+                        <span class="badge bg-warning text-dark">⏳ قيد الانتظار</span>
+                    }
+                    else if (item.Status == "Approved")
+                    {
+                        <span class="badge bg-success">✅ تمت الموافقة</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">❌ مرفوض</span>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "شكراً لك!";
+}
+
+<div class="container mt-5 text-center">
+    <div class="card shadow-lg p-5 border-0" style="background-color: #fff5f5;">
+        <div class="card-body">
+            
+            <div class="mb-4">
+                <h1 style="font-size: 80px;">❤️🩸</h1>
+            </div>
+
+            <h1 class="display-4 text-danger fw-bold mb-3">شكراً لك يا بطل!</h1>
+            
+            <p class="lead text-dark">
+                تم استلام طلب التبرع الخاص بك بنجاح. <br />
+                مبادرتك هذه قد تساهم في إنقاذ حياة إنسان.
+            </p>
+
+            <hr class="my-4 w-50 mx-auto">
+
+            <p class="text-muted">
+                يمكنك متابعة حالة طلبك من خلال سجل التبرعات.
+            </p>
+
+            <div class="mt-4">
+                <a asp-action="Index" class="btn btn-danger btn-lg px-5 mx-2">
+                    📜 سجل تبرعاتي
+                </a>
+                
+                <a asp-controller="Home" asp-action="Index" class="btn btn-outline-dark btn-lg px-5 mx-2">
+                    🏠 الرئيسية
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\bin\Debug\net8.0\BloodDonation.Infrastructure.deps.json
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\bin\Debug\net8.0\BloodDonation.Infrastructure.runtimeconfig.json
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\bin\Debug\net8.0\BloodDonation.Infrastructure.dll
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\bin\Debug\net8.0\BloodDonation.Infrastructure.pdb
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\bin\Debug\net8.0\BloodDonation.Core.dll
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\bin\Debug\net8.0\BloodDonation.Core.pdb
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\obj\Debug\net8.0\BloodDonation.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\obj\Debug\net8.0\BloodDonation.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\obj\Debug\net8.0\BloodDonation.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\obj\Debug\net8.0\BloodDonation.Infrastructure.AssemblyInfo.cs
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\obj\Debug\net8.0\BloodDonation.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\obj\Debug\net8.0\BloodDon.F39D3031.Up2Date
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\obj\Debug\net8.0\BloodDonation.Infrastructure.dll
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\obj\Debug\net8.0\refint\BloodDonation.Infrastructure.dll
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\obj\Debug\net8.0\BloodDonation.Infrastructure.pdb
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\obj\Debug\net8.0\BloodDonation.Infrastructure.genruntimeconfig.cache
+C:\Users\IP3\BloodDonationSys\BloodDonation.Infrastructure\obj\Debug\net8.0\ref\BloodDonation.Infrastructure.dll

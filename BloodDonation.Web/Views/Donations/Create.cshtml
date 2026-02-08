@@ -1,0 +1,44 @@
+@model BloodDonation.Core.Entities.Donation
+
+@{
+    ViewData["Title"] = "New Donation Request";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="card-title mb-0">🩸 طلب تبرع جديد</h3>
+                </div>
+                <div class="card-body">
+                    <p class="lead">شكراً لمبادرتك لإنقاذ حياة! ❤️</p>
+                    <p class="text-muted">سيتم تسجيل الطلب بتاريخ اليوم: <strong>@DateTime.Now.ToString("dd/MM/yyyy")</strong></p>
+
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Notes" class="control-label fw-bold">ملاحظات طبية (اختياري)</label>
+                            <textarea asp-for="Notes" class="form-control" rows="3" placeholder="مثلاً: أعاني من ضغط خفيف، أتناول دواء معين..."></textarea>
+                            <span asp-validation-for="Notes" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger btn-lg">
+                                ✅ إرسال طلب التبرع
+                            </button>
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+                                إلغاء
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

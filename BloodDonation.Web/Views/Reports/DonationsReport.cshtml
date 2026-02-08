@@ -1,0 +1,68 @@
+@model IEnumerable<BloodDonation.Core.Entities.Donation>
+
+@{
+    ViewData["Title"] = "تقرير التبرعات";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center no-print">
+        <h2>📑 تقرير التبرعات (Donations Report)</h2>
+        <button onclick="window.print()" class="btn btn-secondary">🖨️ طباعة التقرير</button>
+    </div>
+
+    <div class="card my-4 bg-light no-print">
+        <div class="card-body">
+            <form method="get" asp-action="DonationsReport" class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label">من تاريخ:</label>
+                    <input type="date" name="startDate" value="@ViewBag.StartDate" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">إلى تاريخ:</label>
+                    <input type="date" name="endDate" value="@ViewBag.EndDate" class="form-control" />
+                </div>
+                <div class="col-md-4 align-self-end">
+                    <button type="submit" class="btn btn-primary w-100">🔍 بحث / فلتر</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>تاريخ التبرع</th>
+                <th>اسم المتبرع</th>
+                <th>فصيلة الدم</th>
+                <th>الحالة</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="4" class="text-center">لا يوجد بيانات في هذه الفترة الزمنية</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.DonationDate.ToString("yyyy-MM-dd")</td>
+                        <td>@item.Donor?.FirstName @item.Donor?.LastName</td>
+                        <td><span class="badge bg-danger">@item.Donor?.BloodType</span></td>
+                        <td>@item.Status</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    @@media print {
+        .no-print { display: none !important; }
+        body { background-color: white; }
+    }
+</style>

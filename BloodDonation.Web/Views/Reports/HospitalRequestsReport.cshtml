@@ -1,0 +1,53 @@
+@model IEnumerable<BloodDonation.Core.Entities.BloodRequest>
+
+@{ ViewData["Title"] = "تقرير المستشفيات"; }
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center no-print">
+        <h2>🏥 تقرير طلبات الدم (Hospital Requests)</h2>
+        <button onclick="window.print()" class="btn btn-secondary">🖨️ طباعة</button>
+    </div>
+
+    <div class="card my-4 bg-light no-print">
+        <div class="card-body">
+            <form method="get" asp-action="HospitalRequestsReport" class="row g-3">
+                <div class="col-md-4">
+                    <label>من تاريخ:</label>
+                    <input type="date" name="startDate" value="@ViewBag.StartDate" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <label>إلى تاريخ:</label>
+                    <input type="date" name="endDate" value="@ViewBag.EndDate" class="form-control" />
+                </div>
+                <div class="col-md-4 align-self-end">
+                    <button type="submit" class="btn btn-primary w-100">🔍 بحث</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <table class="table table-bordered mt-3">
+        <thead class="table-dark">
+        <tr>
+            <th>التاريخ</th>
+            <th>اسم المستشفى</th>
+            <th>النوع المطلوب</th>
+            <th>العدد</th>
+            <th>الحالة</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.RequestDate.ToString("yyyy-MM-dd")</td>
+                <td>@item.Hospital?.UserName</td>
+                <td>@item.BloodType?.Name</td>
+                <td>@item.Quantity</td>
+                <td>@item.Status</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+<style>@@media print { .no-print { display: none !important; } }</style>

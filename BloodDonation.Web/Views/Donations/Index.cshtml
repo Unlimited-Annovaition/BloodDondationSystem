@@ -1,0 +1,61 @@
+@model IEnumerable<BloodDonation.Core.Entities.Donation>
+
+@{
+    ViewData["Title"] = "سجل تبرعاتي";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-danger text-white">
+            <h3 class="card-title mb-0">🩸 سجل تبرعاتي (My Donations)</h3>
+        </div>
+        <div class="card-body">
+            
+            @if (!Model.Any())
+            {
+                <div class="alert alert-warning text-center">
+                    <h5>لا يوجد سجلات تبرع سابقة 🤷‍♂️</h5>
+                    <p>بادر بالتبرع الآن وأنقذ حياة!</p>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">تبرع الآن</a>
+                </div>
+            }
+            else
+            {
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>#</th>
+                            <th>تاريخ التبرع</th>
+                            <th>الحالة</th>
+                            <th>ملاحظاتك</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.DonationDate.ToString("dd/MM/yyyy hh:mm tt")</td>
+                                <td>
+                                    @if (item.Status == "Pending")
+                                    {
+                                        <span class="badge bg-warning text-dark">⏳ قيد الانتظار</span>
+                                    }
+                                    else if (item.Status == "Approved")
+                                    {
+                                        <span class="badge bg-success">✅ مقبول</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">❌ مرفوض</span>
+                                    }
+                                </td>
+                                <td>@(item.Notes ?? "-")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+@model IEnumerable<BloodDonation.Core.Entities.BloodRequest>
+
+@{
+    ViewData["Title"] = "طلبات المستشفيات";
+}
+
+<div class="container mt-5">
+    
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">⚠️ @TempData["Error"]</div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">✅ @TempData["Success"]</div>
+    }
+
+    <div class="card shadow">
+        <div class="card-header bg-warning text-dark">
+            <h3 class="mb-0">🚑 طلبات المستشفيات المعلقة</h3>
+        </div>
+        <div class="card-body">
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info text-center">
+                    <h5>لا يوجد طلبات جديدة من المستشفيات 🤷‍♂️</h5>
+                </div>
+            }
+            else
+            {
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>المستشفى</th>
+                            <th>نوع الدم</th>
+                            <th>العدد المطلوب</th>
+                            <th>التاريخ</th>
+                            <th>الإجراء</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <strong>@item.Hospital?.UserName </strong><br/>
+                                    <small class="text-muted">@item.Hospital?.Email</small>
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger fs-5">@item.BloodType?.Name</span>
+                                </td>
+                                <td>
+                                    <span class="fw-bold fs-5">@item.Quantity</span> وحدات
+                                </td>
+                                <td>@item.RequestDate.ToString("yyyy-MM-dd")</td>
+                                <td>
+                                    <a asp-action="ApproveRequest" asp-route-id="@item.Id" class="btn btn-success btn-sm">
+                                        ✅ صرف الدم
+                                    </a>
+                                    <a asp-action="RejectRequest" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                                        ❌ رفض
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>

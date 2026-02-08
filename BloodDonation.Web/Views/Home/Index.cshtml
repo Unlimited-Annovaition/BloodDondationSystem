@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "الرئيسية";
+}
+
+<div class="jumbotron text-center bg-danger text-white py-5 mb-5 rounded-3 shadow">
+    <div class="container">
+        <h1 class="display-3 fw-bold">نظام بنك الدم المركزي 🩸</h1>
+        <p class="lead fs-3 my-3">تبرعك اليوم.. حياة لغيرك غداً.</p>
+        <hr class="my-4 bg-light" style="opacity: 0.5;">
+        <p class="fs-5">منصة متكاملة لربط المتبرعين بالمستشفيات لتأمين وحدات الدم بأسرع وقت.</p>
+        
+        <div class="mt-4">
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <a class="btn btn-light btn-lg text-danger fw-bold px-5 mx-2 shadow-sm" href="/Identity/Account/Register">
+                    👤 سجل كمتبرع الآن
+                </a>
+                <a class="btn btn-outline-light btn-lg px-5 mx-2" href="/Identity/Account/Login">
+                    🔐 تسجيل الدخول
+                </a>
+            }
+            else
+            {
+                <h3 class="fw-bold mt-3">أهلاً بك يا بطل! 👋</h3>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <div class="display-4 text-danger mb-3">❤️</div>
+                    <h3 class="card-title fw-bold">أنقذ حياة</h3>
+                    <p class="card-text text-muted">تبرعك بوحدة دم واحدة يمكن أن ينقذ حياة 3 أشخاص. كن أنت البطل.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <div class="display-4 text-danger mb-3">🏥</div>
+                    <h3 class="card-title fw-bold">دعم المستشفيات</h3>
+                    <p class="card-text text-muted">نظامنا يربط المستشفيات بمخزون الدم مباشرة لضمان سرعة الاستجابة.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <div class="display-4 text-danger mb-3">📊</div>
+                    <h3 class="card-title fw-bold">تقارير فورية</h3>
+                    <p class="card-text text-muted">لوحة تحكم ذكية لمراقبة المخزون وحركة التبرعات لحظة بلحظة.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-light py-5">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-3">هل أنت مستشفى وتبحث عن تزويد؟</h2>
+        <p class="lead text-muted mb-4">سجل معنا الآن كمؤسسة طبية وابدأ بطلب وحدات الدم إلكترونياً.</p>
+        <a href="/Identity/Account/Register" class="btn btn-outline-danger btn-lg px-5">انضم إلينا 🚑</a>
+    </div>
+</div>

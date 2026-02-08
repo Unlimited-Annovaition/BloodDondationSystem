@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - BloodDonation.Web</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/BloodDonation.Web.styles.css" asp-append-version="true"/>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <partial name="_LoginPartial" />
+            </div>
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="Hospitals" asp-action="Create">Add Hospital</a>
+                </li>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-primary fw-bold" asp-controller="Donations" asp-action="PendingRequests">
+                        🔔 Pending Donations
+                    </a>
+                </li>
+            }
+            @if (User.IsInRole("Donor"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="Donations" asp-action="Index">
+                        📜 My History
+                    </a>
+                </li>
+            }
+            @if (User.IsInRole("Hospital"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-danger fw-bold" asp-controller="BloodRequests" asp-action="Create">
+                        🚑 Request Blood
+                    </a>
+                </li>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-warning fw-bold" asp-controller="BloodRequests" asp-action="PendingRequests">
+                        🚑 Hospital Requests
+                    </a>
+                </li>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-danger fw-bold" asp-controller="BloodStock" asp-action="Index">
+                        📊 Stock Dashboard
+                    </a>
+                </li>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-success fw-bold" asp-controller="Reports" asp-action="Index">
+                        📑 Reports Center
+                    </a>
+                </li>
+            }
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
