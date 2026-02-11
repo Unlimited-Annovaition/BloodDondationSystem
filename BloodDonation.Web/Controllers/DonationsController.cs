@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using BloodDonation.Web.Models;
-
 namespace BloodDonation.Web.Controllers
 {
    
@@ -42,8 +40,8 @@ namespace BloodDonation.Web.Controllers
 
             model.DonorId = donor.Id;         
             model.DonationDate = DateTime.Now; 
-            model.Status = "Pending";          
-
+            model.Status = "Pending"; 
+            
             if (ModelState.IsValid)
             {
                 _context.Add(model);

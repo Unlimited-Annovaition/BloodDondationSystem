@@ -7,26 +7,31 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card shadow">
+            <div class="card shadow border-0">
                 <div class="card-header bg-danger text-white">
-                    <h3 class="card-title mb-0">🩸 طلب تبرع جديد</h3>
+                    <h3 class="card-title mb-0 fw-bold">🩸 تسجيل تبرع جديد</h3>
                 </div>
-                <div class="card-body">
-                    <p class="lead">شكراً لمبادرتك لإنقاذ حياة! ❤️</p>
-                    <p class="text-muted">سيتم تسجيل الطلب بتاريخ اليوم: <strong>@DateTime.Now.ToString("dd/MM/yyyy")</strong></p>
+                <div class="card-body p-4">
+                    <div class="text-center mb-4">
+                        <p class="lead text-gray-800">شكراً لمبادرتك لإنقاذ حياة! ❤️</p>
+                        <p class="text-muted small">
+                            سيتم تسجيل تبرعك بوحدة دم واحدة بتاريخ اليوم:<br>
+                            <strong>@DateTime.Now.ToString("dd/MM/yyyy")</strong>
+                        </p>
+                    </div>
 
                     <form asp-action="Create">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                        <div class="form-group mb-3">
-                            <label asp-for="Notes" class="control-label fw-bold">ملاحظات طبية (اختياري)</label>
-                            <textarea asp-for="Notes" class="form-control" rows="3" placeholder="مثلاً: أعاني من ضغط خفيف، أتناول دواء معين..."></textarea>
+                        <div class="form-group mb-4">
+                            <label asp-for="Notes" class="form-label fw-bold">ملاحظات طبية (اختياري)</label>
+                            <textarea asp-for="Notes" class="form-control" rows="4" placeholder="اكتب هنا إذا كنت تعاني من أي أعراض، أو تتناول أدوية معينة..."></textarea>
                             <span asp-validation-for="Notes" class="text-danger"></span>
                         </div>
 
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-danger btn-lg">
-                                ✅ إرسال طلب التبرع
+                            <button type="submit" class="btn btn-danger btn-lg fw-bold shadow-sm">
+                                ✅ تأكيد التبرع
                             </button>
                             <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
                                 إلغاء
@@ -41,4 +46,5 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 }

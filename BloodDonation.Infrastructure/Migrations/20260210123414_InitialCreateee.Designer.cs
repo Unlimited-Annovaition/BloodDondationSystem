@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BloodDonation.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260208064328_InitialCreateee")]
+    [Migration("20260210123414_InitialCreateee")]
     partial class InitialCreateee
     {
         /// <inheritdoc />
@@ -284,6 +284,30 @@ namespace BloodDonation.Infrastructure.Migrations
                     b.ToTable("Donors");
                 });
 
+            modelBuilder.Entity("BloodDonation.Core.Entities.FeedBack", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FeedBacks", (string)null);
+                });
+
             modelBuilder.Entity("BloodDonation.Core.Entities.Hospital", b =>
                 {
                     b.Property<int>("Id")
@@ -505,6 +529,17 @@ namespace BloodDonation.Infrastructure.Migrations
                     b.Navigation("ApplicationUser");
 
                     b.Navigation("BloodType");
+                });
+
+            modelBuilder.Entity("BloodDonation.Core.Entities.FeedBack", b =>
+                {
+                    b.HasOne("BloodDonation.Core.Entities.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BloodDonation.Core.Entities.Hospital", b =>

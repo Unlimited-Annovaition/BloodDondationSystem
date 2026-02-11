@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "اترك ملاحظتك";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3>📝 رأيك يهمنا</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post">
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">رسالتك:</label>
+                            <textarea name="message" class="form-control" rows="5" required placeholder="اكتب ملاحظاتك هنا..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">إرسال 🚀</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

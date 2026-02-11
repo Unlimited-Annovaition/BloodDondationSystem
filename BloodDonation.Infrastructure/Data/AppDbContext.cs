@@ -15,6 +15,7 @@ namespace BloodDonation.Infrastructure.Data
         public DbSet<BloodRequest> BloodRequests { get; set; }
         public DbSet<Hospital> Hospitals { get; set; }
         public DbSet<BloodStock> BloodStocks { get; set; }
+        public DbSet<FeedBack> FeedBacks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

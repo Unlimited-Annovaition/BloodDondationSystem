@@ -2,69 +2,148 @@
     ViewData["Title"] = "الرئيسية";
 }
 
-<div class="jumbotron text-center bg-danger text-white py-5 mb-5 rounded-3 shadow">
-    <div class="container">
-        <h1 class="display-3 fw-bold">نظام بنك الدم المركزي 🩸</h1>
-        <p class="lead fs-3 my-3">تبرعك اليوم.. حياة لغيرك غداً.</p>
-        <hr class="my-4 bg-light" style="opacity: 0.5;">
-        <p class="fs-5">منصة متكاملة لربط المتبرعين بالمستشفيات لتأمين وحدات الدم بأسرع وقت.</p>
-        
-        <div class="mt-4">
-            @if (!User.Identity.IsAuthenticated)
-            {
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="jumbotron text-center bg-danger text-white py-5 mb-5 rounded-3 shadow">
+        <div class="container">
+            <h1 class="display-3 fw-bold">نظام بنك الدم المركزي 🩸</h1>
+            <p class="lead fs-3 my-3">تبرعك اليوم.. حياة لغيرك غداً.</p>
+            <hr class="my-4 bg-light" style="opacity: 0.5;">
+            
+            <div class="mt-4">
                 <a class="btn btn-light btn-lg text-danger fw-bold px-5 mx-2 shadow-sm" href="/Identity/Account/Register">
                     👤 سجل كمتبرع الآن
                 </a>
                 <a class="btn btn-outline-light btn-lg px-5 mx-2" href="/Identity/Account/Login">
                     🔐 تسجيل الدخول
                 </a>
-            }
-            else
-            {
-                <h3 class="fw-bold mt-3">أهلاً بك يا بطل! 👋</h3>
-            }
+            </div>
         </div>
     </div>
-</div>
 
-<div class="container mb-5">
-    <div class="row text-center">
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm border-0">
-                <div class="card-body">
-                    <div class="display-4 text-danger mb-3">❤️</div>
-                    <h3 class="card-title fw-bold">أنقذ حياة</h3>
-                    <p class="card-text text-muted">تبرعك بوحدة دم واحدة يمكن أن ينقذ حياة 3 أشخاص. كن أنت البطل.</p>
+    <div class="container mb-5">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <div class="display-4 text-danger mb-3">❤️</div>
+                        <h3 class="card-title fw-bold">أنقذ حياة</h3>
+                        <p class="card-text text-muted">تبرعك بوحدة دم واحدة يمكن أن ينقذ حياة 3 أشخاص.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm border-0">
-                <div class="card-body">
-                    <div class="display-4 text-danger mb-3">🏥</div>
-                    <h3 class="card-title fw-bold">دعم المستشفيات</h3>
-                    <p class="card-text text-muted">نظامنا يربط المستشفيات بمخزون الدم مباشرة لضمان سرعة الاستجابة.</p>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <div class="display-4 text-danger mb-3">🏥</div>
+                        <h3 class="card-title fw-bold">دعم المستشفيات</h3>
+                        <p class="card-text text-muted">ربط مباشر مع بنوك الدم لضمان التزويد السريع.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm border-0">
-                <div class="card-body">
-                    <div class="display-4 text-danger mb-3">📊</div>
-                    <h3 class="card-title fw-bold">تقارير فورية</h3>
-                    <p class="card-text text-muted">لوحة تحكم ذكية لمراقبة المخزون وحركة التبرعات لحظة بلحظة.</p>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <div class="display-4 text-danger mb-3">📊</div>
+                        <h3 class="card-title fw-bold">إحصائيات فورية</h3>
+                        <p class="card-text text-muted">مراقبة مستمرة للمخزون وحركة التبرع.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+}
+else
+{
+    <div class="container mt-5">
+        
+        @if (User.IsInRole("Admin"))
+        {
+            // 👮‍♂️ حالة الأدمن: فقط ترحيب (حسب طلبك)
+            <div class="text-center mt-5">
+                <div class="card shadow-sm p-5 border-0 bg-light">
+                    <div class="mb-4">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2942/2942813.png" width="80" alt="Admin Icon">
+                    </div>
+                    <h1 class="display-5 text-dark fw-bold">مرحباً بك يا مدير النظام 👋</h1>
+                    <h3 class="text-muted mt-3">@User.Identity.Name</h3>
+                    <hr class="my-4 w-25 mx-auto">
+                    <p class="lead text-secondary">
+                        أهلاً بك في لوحة التحكم الرئيسية.
+                        <br>
+                        لديك الصلاحيات الكاملة لإدارة النظام من القوائم العلوية.
+                    </p>
+                    <div class="mt-3">
+                        <span class="badge bg-success px-3 py-2 rounded-pill">Status: Active 🟢</span>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (User.IsInRole("Hospital"))
+        {
+            // 🏥 حالة المستشفى
+            <div class="alert alert-light border-start border-primary border-5 shadow-sm mb-4">
+                <h2 class="fw-bold text-gray-800">مرحباً، @User.Identity.Name! 🏥</h2>
+                <p class="text-muted mb-0">بوابة إدارة طلبات الدم للمستشفيات</p>
+            </div>
 
-<div class="bg-light py-5">
-    <div class="container text-center">
-        <h2 class="fw-bold mb-3">هل أنت مستشفى وتبحث عن تزويد؟</h2>
-        <p class="lead text-muted mb-4">سجل معنا الآن كمؤسسة طبية وابدأ بطلب وحدات الدم إلكترونياً.</p>
-        <a href="/Identity/Account/Register" class="btn btn-outline-danger btn-lg px-5">انضم إلينا 🚑</a>
+            <div class="row justify-content-center">
+                <div class="col-md-5 mb-4">
+                    <div class="card shadow border-0 h-100 hover-zoom">
+                        <div class="card-body text-center p-5">
+                            <div class="mb-3 text-primary display-4"><i class="bi bi-plus-circle-dotted"></i> 🚑</div>
+                            <h3 class="card-title fw-bold">طلب وحدات دم</h3>
+                            <p class="card-text text-muted">إنشاء طلب تزويد جديد من البنك المركزي.</p>
+                            <a asp-controller="BloodRequests" asp-action="Create" class="btn btn-primary w-100 rounded-pill mt-3 shadow">
+                                + طلب جديد
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5 mb-4">
+                    <div class="card shadow border-0 h-100 hover-zoom">
+                        <div class="card-body text-center p-5">
+                            <div class="mb-3 text-info display-4"><i class="bi bi-clock-history"></i> 📜</div>
+                            <h3 class="card-title fw-bold">سجل الطلبات</h3>
+                            <p class="card-text text-muted">متابعة حالة الطلبات السابقة.</p>
+                            <a asp-controller="BloodRequests" asp-action="Index" class="btn btn-outline-info w-100 rounded-pill mt-3">
+                                عرض السجل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            // ❤️ حالة المتبرع (Donor)
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-8 text-center">
+                    <div class="card shadow-lg border-0 rounded-lg p-5">
+                        <div class="mb-4">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1165/1165674.png" width="100" alt="Blood Drop" class="animate-bounce">
+                        </div>
+                        <h2 class="fw-bold mb-3">أهلاً بك يا بطل! 👋</h2>
+                        <p class="lead text-muted mb-4">
+                            تبرعك البسيط يصنع فرقاً عظيماً. هل أنت جاهز لإنقاذ حياة؟
+                        </p>
+                        
+                        <a asp-controller="Donations" asp-action="Create" class="btn btn-danger btn-lg px-5 py-3 rounded-pill fw-bold shadow">
+                             سجل طلب تبرع جديد
+                        </a>
+                        
+                        <div class="mt-4 pt-3 border-top">
+                            <a asp-controller="Donations" asp-action="Index" class="text-decoration-none text-secondary">
+                                عرض سجل تبرعاتي السابق
+                            </a>
+                        </div>
+                        <a asp-controller="Feedback" asp-action="Create" class="btn btn-outline-dark btn-lg px-4">
+                            📝 اتصل بنا / شكوى
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
-</div>
+}
