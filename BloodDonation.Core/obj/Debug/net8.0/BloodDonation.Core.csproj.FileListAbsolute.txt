@@ -10,3 +10,4 @@ C:\Users\IP3\BloodDonationSys\BloodDonation.Core\obj\Debug\net8.0\refint\BloodDo
 C:\Users\IP3\BloodDonationSys\BloodDonation.Core\obj\Debug\net8.0\BloodDonation.Core.pdb
 C:\Users\IP3\BloodDonationSys\BloodDonation.Core\obj\Debug\net8.0\ref\BloodDonation.Core.dll
 C:\Users\IP3\BloodDonationSys\BloodDonation.Core\obj\Debug\net8.0\BloodDonation.Core.csproj.AssemblyReference.cache
+C:\Users\IP3\BloodDonationSys\BloodDonation.Core\obj\Debug\net8.0\BloodDonation.Core.sourcelink.json

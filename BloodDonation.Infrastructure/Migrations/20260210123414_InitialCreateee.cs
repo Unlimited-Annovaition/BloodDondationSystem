@@ -172,6 +172,26 @@ namespace BloodDonation.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FeedBacks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Message = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FeedBacks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_FeedBacks_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Hospitals",
                 columns: table => new
                 {
@@ -384,6 +404,11 @@ namespace BloodDonation.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_FeedBacks_UserId",
+                table: "FeedBacks",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Hospitals_ApplicationUserId",
                 table: "Hospitals",
                 column: "ApplicationUserId",
@@ -416,6 +441,9 @@ namespace BloodDonation.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Donations");
+
+            migrationBuilder.DropTable(
+                name: "FeedBacks");
 
             migrationBuilder.DropTable(
                 name: "Hospitals");

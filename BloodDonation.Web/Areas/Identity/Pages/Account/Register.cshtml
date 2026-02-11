@@ -1,25 +1,80 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "إنشاء حساب جديد";
+    ViewData["Title"] = "Register";
 }
 
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="card shadow-lg border-0 rounded-lg">
                 <div class="card-header bg-dark text-white text-center py-4">
                     <h3 class="mb-0 fw-bold">👤 حساب جديد</h3>
-                    <p class="small mb-0 text-white-50">انضم إلينا وأنقذ حياة</p>
+                    <p class="small mb-0 text-white-50">أدخل بياناتك للتسجيل</p>
                 </div>
                 <div class="card-body p-5">
                     <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                        <div class="form-floating mb-3">
-                            <input asp-for="Input.Email" class="form-control" placeholder="name@example.com" />
-                            <label asp-for="Input.Email">البريد الإلكتروني</label>
-                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.FirstName" class="form-control" placeholder="الاسم الأول" />
+                                    <label asp-for="Input.FirstName">الاسم الأول</label>
+                                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.LastName" class="form-control" placeholder="الاسم الأخير" />
+                                    <label asp-for="Input.LastName">الاسم الأخير</label>
+                                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.Email" class="form-control" placeholder="name@example.com" />
+                                    <label asp-for="Input.Email">البريد الإلكتروني</label>
+                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.Phone" class="form-control" placeholder="رقم الهاتف" />
+                                    <label asp-for="Input.Phone">رقم الهاتف</label>
+                                    <span asp-validation-for="Input.Phone" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.NationalId" class="form-control" placeholder="الرقم الوطني" />
+                                    <label asp-for="Input.NationalId">الرقم الوطني</label>
+                                    <span asp-validation-for="Input.NationalId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <select asp-for="Input.BloodTypeId" class="form-select">
+                                        <option value="" selected disabled>اختر الفصيلة</option>
+                                        <option value="1">A+</option>
+                                        <option value="2">A-</option>
+                                        <option value="3">B+</option>
+                                        <option value="4">B-</option>
+                                        <option value="5">AB+</option>
+                                        <option value="6">AB-</option>
+                                        <option value="7">O+</option>
+                                        <option value="8">O-</option>
+                                    </select>
+                                    <label asp-for="Input.BloodTypeId">فصيلة الدم 🩸</label>
+                                    <span asp-validation-for="Input.BloodTypeId" class="text-danger"></span>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row">
@@ -32,15 +87,17 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Password" />
+                                    <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirm Password" />
                                     <label asp-for="Input.ConfirmPassword">تأكيد كلمة السر</label>
                                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="d-grid gap-2">
-                            <button id="registerSubmit" type="submit" class="btn btn-dark btn-lg fw-bold">تسجيل حساب 🆕</button>
+                        <div class="d-grid gap-2 mt-4">
+                            <button id="registerSubmit" type="submit" class="btn btn-dark btn-lg fw-bold shadow-sm">
+                                إنشاء الحساب <i class="bi bi-person-plus-fill"></i>
+                            </button>
                         </div>
                         
                         <div class="text-center mt-3">
